@@ -44,7 +44,7 @@ spec:
   resolution: DNS
 ```
 ### 2.2 Add VirtualService for the service entry
-```
+```yaml
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
@@ -60,8 +60,10 @@ spec:
       attempts: 3
       perTryTimeout: 20s
       retryOn: connect-failure,refused-stream,503
-```
+``` 
 ### 2.3 Test 
+Deploy [the sample application](https://istio.io/latest/docs/setup/getting-started/) in local env. 
+
 In the pod `ratings-v1-b6994bb9-57lqg`, send a http request: 
 1. Into the pod `ratings-v1-b6994bb9-57lqg`:
 `kubectl exec -it ratings-v1-b6994bb9-57lqg /bin/bash`
